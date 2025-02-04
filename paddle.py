@@ -16,3 +16,17 @@ class Paddle:
             new_part.shapesize(0.5)
             new_part.goto(START_POS[i])
             self.paddle.append(new_part)
+
+    def go_left(self):
+        # limit the paddle left movement:
+        paddle_left_side= self.paddle[0].xcor()
+        if paddle_left_side > -460:
+            for part in self.paddle:
+                part.goto(part.xcor() - 60, part.ycor())
+
+    def go_right(self):
+        # limit the paddle right movement:
+        paddle_right_side= self.paddle[-1].xcor()
+        if paddle_right_side < 460:
+            for part in self.paddle:
+                part.goto(part.xcor() + 60, part.ycor())
