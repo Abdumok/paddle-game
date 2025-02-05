@@ -4,7 +4,7 @@ START_POS= [(-45, -280) ,(-35, -280) ,(-25, -280), (-15, -280), (-5, -280), (5, 
 
 class Paddle:
     def __init__(self):
-        self.paddle= []
+        self.all_parts= []
         self.create_paddle()
 
     def create_paddle(self):
@@ -15,18 +15,18 @@ class Paddle:
             new_part.penup()
             new_part.shapesize(0.5)
             new_part.goto(START_POS[i])
-            self.paddle.append(new_part)
+            self.all_parts.append(new_part)
 
     def go_left(self):
         # limit the paddle left movement:
-        paddle_left_side= self.paddle[0].xcor()
+        paddle_left_side= self.all_parts[0].xcor()
         if paddle_left_side > -460:
-            for part in self.paddle:
+            for part in self.all_parts:
                 part.goto(part.xcor() - 60, part.ycor())
 
     def go_right(self):
         # limit the paddle right movement:
-        paddle_right_side= self.paddle[-1].xcor()
+        paddle_right_side= self.all_parts[-1].xcor()
         if paddle_right_side < 460:
-            for part in self.paddle:
+            for part in self.all_parts:
                 part.goto(part.xcor() + 60, part.ycor())

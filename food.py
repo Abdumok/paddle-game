@@ -17,7 +17,7 @@ class Food(Turtle):
         self.goto(XCOR, 320)
 
     def move(self):
-        self.goto(self.xcor(), self.ycor() - 20)
+        self.goto(self.xcor(), self.ycor() - 1)
 
     def hide(self):
         self.clear()

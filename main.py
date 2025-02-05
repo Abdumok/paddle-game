@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from food import Food
+import time
 
 # Setup the main Screen
 window= Screen()
@@ -21,8 +22,24 @@ window.onkey(fun=paddle.go_right, key="Right")
 food = Food()
 game_on= True
 while game_on:
+    if food.ycor() > -300:
+        food.move()
+    if food.ycor() < -350:
+        food.hide()
+        food.create_food()
+
+    for part in paddle.all_parts:
+        if part.distance(food) < 15:
+            if food.shape() == "turtle" and food.pencolor() == "white":
+                food.hide()
+                window.bgcolor("red")
+                game_on= False
+            else:
+                food.hide()
+                food.create_food()
 
 
 
+    time.sleep(0.003)
     window.update()
 window.exitonclick()
