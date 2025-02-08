@@ -11,10 +11,10 @@ class Score(Turtle):
         self.write_score()
 
     def write_score(self):
+        self.clear()
         self.write(f"Score: {self.score}", font=("Times New Roman", 12, "bold"), align="center")
 
     def increase(self, point):
-        self.clear()
         self.score += (1 * point)
         self.write_score()
 

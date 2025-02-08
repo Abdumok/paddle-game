@@ -48,6 +48,7 @@ while game_on:
                 # the shape is triangle: reset the score:
                 if food.shape() == "triangle":
                     score.score =0
+                    score.write_score()
                 # the shape is triangle: add 1 point:
                 elif food.shape() == "square":
                     score.increase(1)
@@ -56,10 +57,6 @@ while game_on:
                     score.increase(3)
                 food.hide()
                 food.create_food()
-                print(food.shape())
-
-
-
     time.sleep(0.003)
     window.update()
 window.exitonclick()
